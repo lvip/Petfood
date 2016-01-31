@@ -1,6 +1,7 @@
 @extends('front.template')
 @section('head')
 
+
     <!-- Add jQuery library -->
     <script type="text/javascript" src="/fancybox/lib/jquery-1.10.1.min.js"></script>
 
@@ -22,6 +23,32 @@
 
     <!-- Add Media helper (this is optional) -->
     <script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
+    <script type="text/javascript" src="/js/jRate.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            var that = this;
+            var toolitup = $("#jRate").jRate({
+                rating: 3,
+                strokeColor: 'black',
+                precision: 1,
+                minSelected: 1,
+                startColor: '#FF8940'   ,
+                endColor: "#FFDE40",
+                onChange: function(rating) {
+                    //console.log("OnChange: Rating: "+rating);
+                },
+                onSet: function(rating) {
+                    console.log("OnSet: Rating: "+rating);
+                }
+            });
+
+            $('#btn-click').on('click', function() {
+                toolitup.setRating(0);
+            });
+
+        });
+    </script>
 <script type="text/javascript">
     $(document).ready(function() {
         /*
@@ -224,6 +251,8 @@
         <div class="box">
             <div class="row">
                 <div class="col-md-4"><h2 >{{$food->title }} </h2></div>
+                <div class="col-md-2"><div id="jRate"> Рейтинг:</div></div>
+
                 <div class="col-md-4 col-md-offset-4">
 
                     @if(session()->has('food.compare'))
@@ -247,15 +276,43 @@
 
 
             <p>
-                <a class="fancybox-thumbs" data-fancybox-group="thumb" href="/4_b.jpg"><img src="/4_s.jpg" alt="" /></a>
+                <a class="fancybox-thumbs" data-fancybox-group="thumb" href="/img/4_b.jpg"><img src="/img/4_s.jpg" alt="" /></a>
 
-                <a class="fancybox-thumbs" data-fancybox-group="thumb" href="/3_b.jpg"><img src="/3_s.jpg" alt="" /></a>
+                <a class="fancybox-thumbs" data-fancybox-group="thumb" href="/img/3_b.jpg"><img src="/img/3_s.jpg" alt="" /></a>
 
-                <a class="fancybox-thumbs" data-fancybox-group="thumb" href="/2_b.jpg"><img src="/2_s.jpg" alt="" /></a>
+                <a class="fancybox-thumbs" data-fancybox-group="thumb" href="/img/2_b.jpg"><img src="/img/2_s.jpg" alt="" /></a>
 
-                <a class="fancybox-thumbs" data-fancybox-group="thumb" href="/1_b.jpg"><img src="/1_s.jpg" alt="" /></a>
+                <a class="fancybox-thumbs" data-fancybox-group="thumb" href="/img/1_b.jpg"><img src="/img/1_s.jpg" alt="" /></a>
             </p>
             <br>
+
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#sostav">Состав</a></li>
+                <li><a data-toggle="tab" href="#oproivoditele">О производителе</a></li>
+                <li><a data-toggle="tab" href="#otzivi">Отзывы</a></li>
+            </ul>
+
+            <div class="tab-content">
+                <div id="sostav" class="tab-pane fade in active">
+                    <h3>HOME</h3>
+                    <p>Ингредиенты:
+                        Филе индейки, картофель, горошек, свежие цельные яйца, томаты, масло канолы (источник витамина Е), семена льна, натуральный ароматизатор, филе лосося, утиное филе, кокосовое масло (источник витамина Е), яблоки, морковь, тыква, бананы, черника, клюква, малина, ежевика, папайя, ананас, грейпфрут, чечевица, брокколи, шпинат, творог, ростки люцерны, дикальций фосфат, люцерна, карбонат кальция, фосфорная кислота, натрия хлорид, лецитин, хлорид калия, DL-метионин, таурин, витамины (витамин Е, L-аскорбил-2-полифосфатов (источник витамина С), никотиновая кислота, инозит, витамин А, тиамин, амононитрат, пантотенат D-кальция, пиридоксинагидрохлорид, рибофлавин, бета-каротин, витамин D3, фолиевая кислота, биотин, витаминВ12), минералы (протеинат цинка, сульфат железа, оксид цинка, протеинат железа, сульфат меди, протеинат меди, протеинат марганца, оксид марганца, йодат кальция, селенит натрия), сушеные водоросли,L-лизин, сухой корень цикория, Lactobacillus, Enterococcusfaecium, Aspergillus, экстракт Юкки Шидигера, L-карнитин, ноготки, сушеный розмарин..</p>
+                </div>
+                <div id="oproivoditele" class="tab-pane fade">
+                    <h3>Menu 1</h3>
+                    <p>Канадский супер-премиум корм Now Natural Holistic изготовлен только из свежего бескостного мяса, с добавлением овощей и фруктов, без использования гормонов и субпродуктов.
+                        100% беззерновой корм со сбалансированным содержанием белков и жиров.
+                        NOW - единственный корм, который не только не содержит зерновых, но и обладает оптимальным соотношением белков и жиров.</p>
+                </div>
+                <div id="otzivi" class="tab-pane fade">
+                    <h3>Menu 2</h3>
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                </div>
+            </div>
+            <hr>
+            <p>Гарантированный анализ:</p>
+            <br>
+
             <table class="table table-striped">
                 <thead>
                 <tr>

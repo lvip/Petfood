@@ -168,21 +168,21 @@ class DatabaseSeeder extends Seeder {
 		Food::create([
 			'title' => 'food 1',
 			'slug' => 'wiski-1',
-			'image' => 'filemanager\userfiles\foodimg\wiski-1',
+			'image' => 'filemanager\userfiles\foodimg\wiski-1.png',
 			'seen' => true,
 			'active' => true
 		]);
 		Food::create([
 			'title' => 'food 2',
 			'slug' => 'wiski-2',
-			'image' => 'filemanager\userfiles\foodimg\wiski-2',
+			'image' => 'filemanager\userfiles\foodimg\wiski-2.png',
 			'seen' => true,
 			'active' => true
 		]);
 		Food::create([
 			'title' => 'food 3',
 			'slug' => 'wiski-3',
-			'image' => 'filemanager\userfiles\foodimg\wiski-3',
+			'image' => 'filemanager\userfiles\foodimg\wiski-3.png',
 			'seen' => true,
 			'active' => true
 		]);
